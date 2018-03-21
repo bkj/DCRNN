@@ -6,12 +6,12 @@ Yaguang Li, Rose Yu, Cyrus Shahabi, Yan Liu, [Diffusion Convolutional Recurrent 
 
 
 ## Requirements
+- python 2.7
 - hyperopt>=0.1
 - scipy>=0.19.0
 - numpy>=1.12.1
 - pandas==0.19.2
 - tensorflow>=1.3.0
-- python 2.7
 
 Dependency can be installed using the following command:
 ```bash
@@ -20,8 +20,7 @@ pip install -r requirements.txt
 
 
 ## Traffic Data
-The traffic data file for Los Angeles is available [here](https://drive.google.com/open?id=1tjf5aXCgUoimvADyxKqb-YUlxP8O46pb), and should be
-put into the `data/` folder.
+The traffic data file for Los Angeles is available [here](https://drive.google.com/open?id=1tjf5aXCgUoimvADyxKqb-YUlxP8O46pb), and should be put into the `data/` folder.
 
 
 ## Graph Construction
@@ -29,13 +28,15 @@ put into the `data/` folder.
  supports sensor ids in Los Angeles (see `data/sensor_graph/sensor_info_201206.csv`).
 
 ```bash
-python gen_adj_mx.py  --sensor_ids_filename=data/sensor_graph/graph_sensor_ids.txt --normalized_k=0.1\
-    --output_pkl_filename=data/sensor_graph/adj_mx.pkl
+python gen_adj_mx.py  \
+ --sensor_ids_filename=data/sensor_graph/graph_sensor_ids.txt \
+ --normalized_k=0.1 \
+ --output_pkl_filename=data/sensor_graph/adj_mx.pkl
 ```
 
 ## Train the Model
 ```bash
-python dcrnn_seq2seq_train.py --config_filename=data/model/dcrnn_config.json
+python dcrnn_train.py --config_filename=data/model/dcrnn_config.json
 ```
 
 
